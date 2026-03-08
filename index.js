@@ -135,18 +135,15 @@ function convertToSticker(inputPath, outputPath, mediaType) {
     return new Promise((resolve, reject) => {
         if (mediaType === 'video') {
             // Animated sticker for video - WhatsApp compatible
-            // For very short videos, we need to loop them to ensure animation
             ffmpeg(inputPath)
-                .inputOptions(['-stream_loop', '3'])  // Loop 3 times for short clips
                 .outputOptions([
                     '-vcodec', 'libwebp',
-                    '-vf', 'scale=512:512:force_original_aspect_ratio=decrease,fps=15,pad=512:512:-1:-1:color=0x00000000,format=rgba',
+                    '-vf', 'scale=512:512:force_original_aspect_ratio=decrease,fps=10,pad=512:512:-1:-1:color=0x00000000,format=rgba',
                     '-loop', '0',
                     '-preset', 'picture',
                     '-an',
                     '-vsync', '0',
-                    '-t', '3',  // Limit output to 3 seconds
-                    '-quality', '75'
+                    '-quality', '50'
                 ])
                 .toFormat('webp')
                 .save(outputPath)
