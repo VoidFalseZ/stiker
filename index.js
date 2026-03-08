@@ -90,8 +90,8 @@ async function connectToWhatsApp() {
                 // Check if quoted message is video
                 else if (quotedMsg.videoMessage) {
                     const duration = quotedMsg.videoMessage.seconds || 0;
-                    if (duration > 10) {
-                        await sock.sendMessage(chatId, { text: 'Video must be 10 seconds or less!' });
+                    if (duration > 60) {
+                        await sock.sendMessage(chatId, { text: 'Video must be 60 seconds or less!' });
                         return;
                     }
                     mediaType = 'video';
