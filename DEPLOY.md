@@ -17,7 +17,7 @@ Open a new PowerShell terminal and run:
 
 ```powershell
 cd d:\botwa
-scp -r index.js package.json root@72.62.192.99:~/botwa/
+scp -r index.js package.json root@84.247.150.83:~/botwa/
 ```
 
 ## 3. On VPS - Install Dependencies and Setup
@@ -31,7 +31,7 @@ npm install -g pm2
 ## 4. Start Bot with PM2
 
 ```bash
-pm2 start index.js --name whatsapp-bot
+pm2 start index.js --name botwa
 pm2 logs whatsapp-bot
 ```
 
